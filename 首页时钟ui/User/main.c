@@ -2,6 +2,8 @@
 #include "Delay.h"
 #include "OLED.h"
 #include "Menu.h"
+#include "Timer.h"
+#include "Key.h"
 
 
 /**
@@ -25,6 +27,7 @@
   * 
   */
 
+
 int main(void)
 {
 	/*OLED≥ı ºªØ*/
@@ -32,11 +35,28 @@ int main(void)
 	OLED_Clear();
 	Menu_Init();
 	
+	int clkflg=1;
+	
+	Timer_Init();
+	
+	
 	
 	while (1)
 	{
 		
-	Show_clock_ui();
-		OLED_Update();
+		clkflg=First_Page_Clock();
+		if(clkflg==1){}
+		else if(clkflg==2){}
 	}
 }
+	
+void TIM2_IRQHandler(void)
+{
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
+	{
+		Key_Tick();
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+	}
+}
+
+
