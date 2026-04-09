@@ -45,7 +45,7 @@ int main(void)
 	{
 		
 		clkflg1=First_Page_Clock();
-		if(clkflg1==1){}
+		if(clkflg1==1){ Menu();}
 		else if(clkflg1==2){SettingPage();}
 	}
 }

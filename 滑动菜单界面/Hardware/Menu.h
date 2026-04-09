@@ -6,4 +6,5 @@ void Show_clock_ui(void);
 int First_Page_Clock(void);
 int SettingPage(void);
 void SettingPage_ui();
+int Menu(void);
 #endif
